@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:untitled/main.dart';
+import 'package:coffee_info_explorer/main.dart';
 
 void main() {
   testWidgets('CoffeeInfoExplorerApp loads and displays HomePage', (

@@ -1,21 +1,23 @@
-name: untitled
-description: A Flutter app to explore coffee types from around the world.
+name: coffee_info_explorer
+description: A new Flutter project.
+
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.7.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
   google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^3.0.1
 
 flutter:
   uses-material-design: true
+
   assets:
     - assets/images/

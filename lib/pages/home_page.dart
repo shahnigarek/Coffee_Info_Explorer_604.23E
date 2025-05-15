@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import ' coffee_detail_page.dart';
 import '../models/coffee_model.dart';
 import '../widgets/coffee_card.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final List<CoffeeModel> coffees = [
     CoffeeModel(
       name: 'Affogato',
@@ -90,7 +98,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(slivers: [_buildHeader(), _buildSection(coffees)]),
+      body: CustomScrollView(
+        slivers: [
+          _buildHeader(),
+          _buildSection(context),
+        ],
+      ),
     );
   }
 
@@ -139,37 +152,61 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
+          Positioned(
+            top: 100,
+            right: 40,
+            child: SafeArea(
+              child: Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.favorite_border,
+                  size: 32,
+                  color: Colors.red,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  SliverToBoxAdapter _buildSection(List<CoffeeModel> coffees) {
+  SliverToBoxAdapter _buildSection(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
         padding: const EdgeInsets.only(bottom: 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-
-              child: GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: coffees.length,
-                padding: const EdgeInsets.only(top: 50, bottom: 40),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  childAspectRatio: 0.95,
-                  mainAxisSpacing: 14,
-                  crossAxisSpacing: 30,
-                ),
-                itemBuilder:
-                    (context, index) => CoffeeCard(coffee: coffees[index]),
-              ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+          child: GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: coffees.length,
+            padding: const EdgeInsets.only(top: 50, bottom: 40),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              childAspectRatio: 0.95,
+              mainAxisSpacing: 14,
+              crossAxisSpacing: 30,
             ),
-          ],
+            itemBuilder: (context, index) {
+              final coffee = coffees[index];
+              return CoffeeCard(
+                coffee: coffee,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CoffeeDetailPage(coffee: coffee),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );
