@@ -9,6 +9,7 @@ class CoffeeModel {
   final String tasteProfile;
   final String caffeineLevel;
   final String funFact;
+  bool isFavorite;
 
   CoffeeModel({
     required this.name,
@@ -21,10 +22,11 @@ class CoffeeModel {
     required this.tasteProfile,
     required this.caffeineLevel,
     required this.funFact,
+    this.isFavorite=false,
   });
 }
 
-List<CoffeeModel> coffeeList = [
+List<CoffeeModel> coffees = [
   CoffeeModel(
     name: 'Cappuccino',
     imageAsset: 'assets/images/cappuccino.jpeg',
@@ -41,7 +43,7 @@ List<CoffeeModel> coffeeList = [
     name: 'Flat White',
     imageAsset: 'assets/images/flatwhite.jpg',
     image: 'assets/images/flat_white_details.jpeg',
-    description: 'Espresso with steamed milk and microfoam.',
+    description: 'Espresso with smooth microfoam.',
     description2: 'A smooth, creamy coffee made with espresso and steamed milk.',
     origin: 'Australia or New Zealand',
     brewingMethod: 'Espresso with steamed milk and microfoam',
@@ -65,7 +67,7 @@ List<CoffeeModel> coffeeList = [
     name: 'Latte',
     imageAsset: 'assets/images/latte.jpg',
     image: 'assets/images/latte_details.jpeg',
-    description: 'Espresso with steamed milk and foam.',
+    description: 'Espresso with lots of steamed milk.',
     description2: 'A creamy espresso drink made with steamed milk and topped with a little foam.',
     origin: 'Italy',
     brewingMethod: 'Espresso, steamed milk, light foam',
@@ -74,10 +76,10 @@ List<CoffeeModel> coffeeList = [
     funFact: 'The word "latte" comes from the Italian phrase "caffè latte," meaning "milk coffee."',
   ),
   CoffeeModel(
-    name: 'Caffè Macchiato',
+    name: 'Macchiato',
     imageAsset: 'assets/images/macchiato.jpg',
     image: 'assets/images/caffee_machiatto_details.jpeg',
-    description: 'Espresso "stained" with a small amount of milk.',
+    description: 'Espresso with a touch of foam.',
     description2: 'A strong espresso with just a touch of steamed milk.',
     origin: 'Italy',
     brewingMethod: 'Espresso, splash of milk',
@@ -89,7 +91,7 @@ List<CoffeeModel> coffeeList = [
     name: 'Mocha',
     imageAsset: 'assets/images/mocha.jpg',
     image: 'assets/images/mocha_details.jpeg',
-    description: 'Espresso with chocolate syrup, steamed milk, and whipped cream.',
+    description: 'Espresso with milk and chocolate.',
     description2: 'A chocolatey, creamy coffee drink made with espresso, steamed milk, and whipped cream.',
     origin: 'Italy',
     brewingMethod: 'Espresso, chocolate syrup, steamed milk, whipped cream',
@@ -113,7 +115,7 @@ List<CoffeeModel> coffeeList = [
     name: 'Cortado',
     imageAsset: 'assets/images/cortado.jpg',
     image: 'assets/images/cortado_details.jpg',
-    description: 'Espresso with a small amount of steamed milk.',
+    description: 'Espresso with equal steamed milk.',
     description2: 'A balanced drink of espresso and steamed milk, providing a smooth texture.',
     origin: 'Spain',
     brewingMethod: 'Espresso, steamed milk',
@@ -137,7 +139,7 @@ List<CoffeeModel> coffeeList = [
     name: 'Irish Coffee',
     imageAsset: 'assets/images/irish.jpeg',
     image: 'assets/images/irish_coffee_details.jpeg',
-    description: 'Hot coffee with whiskey and cream.',
+    description: 'Coffee mixed with Irish whiskey.',
     description2: 'A warming coffee cocktail made with hot coffee, Irish whiskey, and cream.',
     origin: 'Ireland',
     brewingMethod: 'Hot coffee, Irish whiskey, sugar, cream',
@@ -173,7 +175,7 @@ List<CoffeeModel> coffeeList = [
     name: 'Turkish Coffee',
     imageAsset: 'assets/images/turkishcoffee.jpg',
     image: 'assets/images/turkish_coffee_details.jpg',
-    description: 'Finely ground coffee brewed with water and sugar.',
+    description: 'Strong, thick unfiltered coffee.',
     description2: 'A rich, thick coffee brewed in a special pot called a cezve.',
     origin: 'Turkey, Middle East, Balkans',
     brewingMethod: 'Finely ground coffee, water, sugar, cezve',
@@ -185,7 +187,7 @@ List<CoffeeModel> coffeeList = [
     name: 'Drip Coffee',
     imageAsset: 'assets/images/dripcoffee.jpg',
     image: 'assets/images/drip_coffee_details.jpg',
-    description: 'Hot brewed coffee made by dripping water over coffee grounds.',
+    description: 'Brewed by dripping hot water.',
     description2: 'A simple brewing method where water is poured over coffee grounds.',
     origin: 'Global',
     brewingMethod: 'Drip coffee maker, or pour-over',
@@ -197,7 +199,7 @@ List<CoffeeModel> coffeeList = [
     name: 'Lungo',
     imageAsset: 'assets/images/lungo.jpg',
     image: 'assets/images/lungo_details.jpeg',
-    description: 'Espresso with more water for a longer shot.',
+    description: 'Longer espresso with more water',
     description2: 'A longer version of espresso made with more water, resulting in a larger, milder cup.',
     origin: 'Italy',
     brewingMethod: 'Espresso machine with more water',
@@ -209,7 +211,7 @@ List<CoffeeModel> coffeeList = [
     name: 'Red Eye',
     imageAsset: 'assets/images/Red-Eye.jpg',
     image: 'assets/images/red_eye_details.jpg',
-    description: 'Coffee with a shot of espresso.',
+    description: 'Drip coffee with an espresso shot.',
     description2: 'A strong, caffeine-packed drink made by adding a shot of espresso to a regular brewed coffee.',
     origin: 'United States',
     brewingMethod: 'Brewed coffee with a shot of espresso',
