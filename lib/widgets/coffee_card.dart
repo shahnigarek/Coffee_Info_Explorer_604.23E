@@ -5,11 +5,13 @@ import '../models/coffee_model.dart';
 class CoffeeCard extends StatefulWidget {
   final CoffeeModel coffee;
   final VoidCallback? onTap;
+  final VoidCallback? onFavoriteToggle;   
 
   const CoffeeCard({
     Key? key,
     required this.coffee,
     this.onTap,
+    this.onFavoriteToggle,
   }) : super(key: key);
 
   @override
@@ -94,13 +96,23 @@ class _CoffeeCardState extends State<CoffeeCard> {
                   ),
                 ],
               ),
+
               Positioned(
                 top: 12,
                 right: 15,
-                child: Icon(
-                  Icons.favorite_border,
-                  color: Colors.white70,
-                  size: 22,
+                child: GestureDetector(
+                  onTap: () {
+                    widget.onFavoriteToggle?.call();
+                  },
+                  child: Icon(
+                    widget.coffee.isFavorite
+                        ? Icons.favorite
+                        : Icons.favorite_border,
+                    color: widget.coffee.isFavorite
+                        ? Colors.redAccent
+                        : Colors.white,
+                    size: 22,
+                  ),
                 ),
               ),
             ],
