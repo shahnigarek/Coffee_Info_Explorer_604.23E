@@ -50,7 +50,7 @@ class FavoritesPage extends StatelessWidget {
                             coffee.imageAsset,
                             fit: BoxFit.cover,
                             width: double.infinity,
-                            height: 280,
+                            height: 322,
                           ),
                         ),
                         Container(
