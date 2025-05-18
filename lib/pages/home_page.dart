@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import ' coffee_detail_page.dart';
+import 'coffee_detail_page.dart';
 import 'favorites_page.dart';
 import '../models/coffee_model.dart';
 import '../widgets/coffee_card.dart';
