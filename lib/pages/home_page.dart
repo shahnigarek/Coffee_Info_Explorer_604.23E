@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'coffee_detail_page.dart';
+import ' coffee_detail_page.dart';
+import 'favorites_page.dart';
 import '../models/coffee_model.dart';
 import '../widgets/coffee_card.dart';
 
@@ -79,10 +80,20 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.white,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
-                  Icons.favorite_border,
-                  size: 32,
-                  color: Colors.red,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.favorite_border,
+                    size: 32,
+                    color: Colors.red,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => FavoritesPage(coffees: coffees),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -120,6 +131,11 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => CoffeeDetailPage(coffee: coffee),
                     ),
                   );
+                },
+                onFavoriteToggle: () {
+                  setState(() {
+                    coffee.isFavorite = !coffee.isFavorite;
+                  });
                 },
               );
             },
