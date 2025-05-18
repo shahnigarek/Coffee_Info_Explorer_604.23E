@@ -11,7 +11,6 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // filter the list for favorites
     final favorites = coffees.where((c) => c.isFavorite).toList();
 
     return Scaffold(
