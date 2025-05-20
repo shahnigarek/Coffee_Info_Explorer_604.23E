@@ -74,7 +74,7 @@ class CoffeeDetailPageState extends State<CoffeeDetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: Column(
                         children: [
                           Container(
@@ -101,33 +101,42 @@ class CoffeeDetailPageState extends State<CoffeeDetailPage> {
                             children: [
                               ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
-                                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 15),
                                   backgroundColor: Colors.brown,
                                 ),
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                icon: Icon(Icons.home, size: 30, color: Colors.white),
+                                icon: Icon(Icons.home,
+                                    size: 30, color: Colors.white),
                                 label: Text(
                                   "Back to Home",
-                                  style: GoogleFonts.lora(fontSize: 16, color: Colors.white),
+                                  style: GoogleFonts.lora(
+                                      fontSize: 16, color: Colors.white),
                                 ),
                               ),
                               SizedBox(width: 20),
                               ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
-                                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 15),
                                   backgroundColor: Colors.red,
                                 ),
                                 onPressed: _toggleFavorite,
                                 icon: Icon(
-                                  widget.coffee.isFavorite ? Icons.favorite : Icons.favorite_border,
+                                  widget.coffee.isFavorite
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
                                   size: 30,
                                   color: Colors.white,
                                 ),
                                 label: Text(
-                                  widget.coffee.isFavorite ? "Unfavorite" : "Favorite",
-                                  style: GoogleFonts.lora(fontSize: 16, color: Colors.white),
+                                  widget.coffee.isFavorite
+                                      ? "Unfavorite"
+                                      : "Favorite",
+                                  style: GoogleFonts.lora(
+                                      fontSize: 16, color: Colors.white),
                                 ),
                               ),
                             ],
@@ -137,11 +146,11 @@ class CoffeeDetailPageState extends State<CoffeeDetailPage> {
                     ),
                     SizedBox(width: 20),
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: Color(0xCCFFFFFF),
+                          color: Color.fromARGB(230, 248, 246, 246),
                           borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
@@ -163,10 +172,14 @@ class CoffeeDetailPageState extends State<CoffeeDetailPage> {
                             ),
                             SizedBox(height: 20),
                             _buildDetailText('Origin:', widget.coffee.origin),
-                            _buildDetailText('Brewing Method:', widget.coffee.brewingMethod),
-                            _buildDetailText('Taste Profile:', widget.coffee.tasteProfile),
-                            _buildDetailText('Caffeine Level:', widget.coffee.caffeineLevel),
-                            _buildDetailText('Fun Fact:', widget.coffee.funFact),
+                            _buildDetailText(
+                                'Brewing Method:', widget.coffee.brewingMethod),
+                            _buildDetailText(
+                                'Taste Profile:', widget.coffee.tasteProfile),
+                            _buildDetailText(
+                                'Caffeine Level:', widget.coffee.caffeineLevel),
+                            _buildDetailText(
+                                'Fun Fact:', widget.coffee.funFact),
                           ],
                         ),
                       ),
@@ -191,10 +204,11 @@ class CoffeeDetailPageState extends State<CoffeeDetailPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        width: double.infinity,
+        padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
-          color: Color(0x193E2723),
-          borderRadius: BorderRadius.circular(8),
+          color: const Color.fromARGB(25, 200, 200, 200),
+          borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
               color: Colors.black26,
