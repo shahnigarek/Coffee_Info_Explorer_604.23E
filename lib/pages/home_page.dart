@@ -86,13 +86,14 @@ class _HomePageState extends State<HomePage> {
                     size: 32,
                     color: Colors.red,
                   ),
-                  onPressed: () {
-                    Navigator.push(
+                  onPressed: () async {
+                    await Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (_) => FavoritesPage(coffees: coffees),
                       ),
                     );
+                    setState(() {});
                   },
                 ),
               ),
