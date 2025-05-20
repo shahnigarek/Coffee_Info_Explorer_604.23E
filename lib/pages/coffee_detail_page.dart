@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/coffee_model.dart';
+import 'home_page.dart';
 
 class CoffeeDetailPage extends StatefulWidget {
   final CoffeeModel coffee;
@@ -18,7 +19,7 @@ class CoffeeDetailPageState extends State<CoffeeDetailPage> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.local_cafe, color: Colors.white),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -46,11 +47,6 @@ class CoffeeDetailPageState extends State<CoffeeDetailPage> {
               colors: [Color(0xFF3E2B1F), Color(0xFFF1D1A6)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-            ),
-            image: DecorationImage(
-              image: AssetImage('assets/coffee_texture.png'),
-              fit: BoxFit.cover,
-              opacity: 0.1,
             ),
           ),
           child: Padding(
@@ -106,7 +102,13 @@ class CoffeeDetailPageState extends State<CoffeeDetailPage> {
                                   backgroundColor: Colors.brown,
                                 ),
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  if (context.mounted) {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomePage()),
+                                    );
+                                  }
                                 },
                                 icon: Icon(Icons.home,
                                     size: 30, color: Colors.white),
