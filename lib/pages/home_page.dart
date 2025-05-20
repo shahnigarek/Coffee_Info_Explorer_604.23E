@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
       child: Stack(
         children: [
           Container(
-            height: 730,
+            height: 800,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/welcomingphoto.jpg'),
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Container(height: 730, color: Colors.black.withOpacity(0.3)),
+          Container(height: 800, color: Colors.black.withOpacity(0.3)),
           Positioned(
             bottom: 320,
             left: 100,
