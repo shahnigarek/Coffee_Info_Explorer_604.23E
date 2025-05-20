@@ -5,7 +5,7 @@ import '../models/coffee_model.dart';
 class CoffeeCard extends StatefulWidget {
   final CoffeeModel coffee;
   final VoidCallback? onTap;
-  final VoidCallback? onFavoriteToggle;   
+  final VoidCallback? onFavoriteToggle;
 
   const CoffeeCard({
     Key? key,
@@ -65,38 +65,32 @@ class _CoffeeCardState extends State<CoffeeCard> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 6),
                       child: Center(
-                        child: AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 500),
-                          child: _isHovered
-                              ? Text(
-                                  widget.coffee.description,
-                                  key: const ValueKey('desc'),
-                                  style: GoogleFonts.robotoMono(
-                                    fontSize: 13,
-                                    color: Colors.white60,
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
-                                )
-                              : Text(
-                                  widget.coffee.name,
-                                  key: const ValueKey('name'),
-                                  style: GoogleFonts.robotoMono(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
+                        child: _isHovered
+                            ? Text(
+                                widget.coffee.description,
+                                style: GoogleFonts.robotoMono(
+                                  fontSize: 13,
+                                  color: Colors.white60,
                                 ),
-                        ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              )
+                            : Text(
+                                widget.coffee.name,
+                                style: GoogleFonts.robotoMono(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              ),
                       ),
                     ),
                   ),
                 ],
               ),
-
               Positioned(
                 top: 12,
                 right: 15,
