@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/coffee_model.dart';
+import '../widgets/coffee_card.dart';
+import 'coffee_detail_page.dart';
 
-class FavoritesPage extends StatelessWidget {
+class FavoritesPage extends StatefulWidget {
   final List<CoffeeModel> coffees;
 
   const FavoritesPage({
@@ -10,8 +12,13 @@ class FavoritesPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<FavoritesPage> createState() => _FavoritesPageState();
+}
+
+class _FavoritesPageState extends State<FavoritesPage> {
+  @override
   Widget build(BuildContext context) {
-    final favorites = coffees.where((c) => c.isFavorite).toList();
+    final favorites = widget.coffees.where((c) => c.isFavorite).toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -32,46 +39,26 @@ class FavoritesPage extends StatelessWidget {
                   crossAxisCount: 4,
                   crossAxisSpacing: 8,
                   mainAxisSpacing: 8,
-                  childAspectRatio: 1,
+                  childAspectRatio: 0.95,
                 ),
                 itemBuilder: (context, index) {
                   final coffee = favorites[index];
-                  return Card(
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.vertical(
-                              top: Radius.circular(16)),
-                          child: Image.asset(
-                            coffee.imageAsset,
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                            height: 322,
-                          ),
+                  return CoffeeCard(
+                    coffee: coffee,
+                    onTap: () async {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => CoffeeDetailPage(coffee: coffee),
                         ),
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 78, 55, 47),
-                            borderRadius: BorderRadius.vertical(
-                                bottom: Radius.circular(16)),
-                          ),
-                          child: Text(
-                            coffee.name,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      );
+                      setState(() {});
+                    },
+                    onFavoriteToggle: () {
+                      setState(() {
+                        coffee.isFavorite = !coffee.isFavorite;
+                      });
+                    },
                   );
                 },
               ),
